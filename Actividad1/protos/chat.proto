@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package grpc;
+
+service Contection {
+  rpc SendMsg (Request) returns (Msje);
+}
+
+message Request{
+  string name = 1;
+}
+
+message Msje{
+ string message = 1;
+}
