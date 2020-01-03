@@ -1,15 +1,48 @@
 syntax = "proto3";
-
+import "google/protobuf/timestamp.proto";
 package grpc;
 
-service Contection {
-  rpc SendMsg (Request) returns (Msje);
+message MessageRequest{
+  string id = 1;
+  google.protobuf.Timestamp time = 2;
+  string message = 3;
+}
+message MessageResponse{
 }
 
-message Request{
-  string name = 1;
+//--------------
+message UserRequest{
+  string userId = 1;
+}
+message UserResponse{
+  repeated UserRequest userlist = 1;
 }
 
-message Msje{
- string message = 1;
+//--------------
+message UserMsje{
+  repeated MessageRequest msges = 1;
 }
+
+message response{
+  bool resp = 1;
+}
+
+//--------------
+service User{
+  rpc addUser (UserRequest) returns (response);
+  rpc getListUser (MessageResponse) returns (UserResponse);
+  rpc closeConection (UserRequest) returns (MessageResponse);
+}
+
+service ContectionServer {
+  rpc SendMsg (MessageRequest) returns (MessageResponse);
+  rpc CreateChannel (MessageResponse) returns (stream MessageRequest);
+}
+
+service ser_message{
+  rpc savemsge (MessageRequest) returns (MessageResponse);
+  rpc getMsges (UserRequest) returns (UserMsje);
+}
+
+
+

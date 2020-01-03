@@ -1,0 +1,3 @@
+python -m grpc_tools.protoc -I./protos --python_out=./protos --grpc_python_out=./protos ./protos/chat.proto
+
+python -m grpc_tools.protoc -I./<TU CARPETA PROTO> --python_out=./<TU CARPETA PROTO> --grpc_python_out=./<TU RUTA HASTA EL CHAT PROTO>/chat.proto

@@ -4,7 +4,83 @@ import grpc
 import chat_pb2 as chat__pb2
 
 
-class ContectionStub(object):
+class UserStub(object):
+  """--------------
+  """
+
+  def __init__(self, channel):
+    """Constructor.
+
+    Args:
+      channel: A grpc.Channel.
+    """
+    self.addUser = channel.unary_unary(
+        '/grpc.User/addUser',
+        request_serializer=chat__pb2.UserRequest.SerializeToString,
+        response_deserializer=chat__pb2.response.FromString,
+        )
+    self.getListUser = channel.unary_unary(
+        '/grpc.User/getListUser',
+        request_serializer=chat__pb2.MessageResponse.SerializeToString,
+        response_deserializer=chat__pb2.UserResponse.FromString,
+        )
+    self.closeConection = channel.unary_unary(
+        '/grpc.User/closeConection',
+        request_serializer=chat__pb2.UserRequest.SerializeToString,
+        response_deserializer=chat__pb2.MessageResponse.FromString,
+        )
+
+
+class UserServicer(object):
+  """--------------
+  """
+
+  def addUser(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def getListUser(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def closeConection(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+
+def add_UserServicer_to_server(servicer, server):
+  rpc_method_handlers = {
+      'addUser': grpc.unary_unary_rpc_method_handler(
+          servicer.addUser,
+          request_deserializer=chat__pb2.UserRequest.FromString,
+          response_serializer=chat__pb2.response.SerializeToString,
+      ),
+      'getListUser': grpc.unary_unary_rpc_method_handler(
+          servicer.getListUser,
+          request_deserializer=chat__pb2.MessageResponse.FromString,
+          response_serializer=chat__pb2.UserResponse.SerializeToString,
+      ),
+      'closeConection': grpc.unary_unary_rpc_method_handler(
+          servicer.closeConection,
+          request_deserializer=chat__pb2.UserRequest.FromString,
+          response_serializer=chat__pb2.MessageResponse.SerializeToString,
+      ),
+  }
+  generic_handler = grpc.method_handlers_generic_handler(
+      'grpc.User', rpc_method_handlers)
+  server.add_generic_rpc_handlers((generic_handler,))
+
+
+class ContectionServerStub(object):
   # missing associated documentation comment in .proto file
   pass
 
@@ -15,13 +91,18 @@ class ContectionStub(object):
       channel: A grpc.Channel.
     """
     self.SendMsg = channel.unary_unary(
-        '/grpc.Contection/SendMsg',
-        request_serializer=chat__pb2.Request.SerializeToString,
-        response_deserializer=chat__pb2.Msje.FromString,
+        '/grpc.ContectionServer/SendMsg',
+        request_serializer=chat__pb2.MessageRequest.SerializeToString,
+        response_deserializer=chat__pb2.MessageResponse.FromString,
+        )
+    self.CreateChannel = channel.unary_stream(
+        '/grpc.ContectionServer/CreateChannel',
+        request_serializer=chat__pb2.MessageResponse.SerializeToString,
+        response_deserializer=chat__pb2.MessageRequest.FromString,
         )
 
 
-class ContectionServicer(object):
+class ContectionServerServicer(object):
   # missing associated documentation comment in .proto file
   pass
 
@@ -32,15 +113,86 @@ class ContectionServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def CreateChannel(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
 
-def add_ContectionServicer_to_server(servicer, server):
+
+def add_ContectionServerServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'SendMsg': grpc.unary_unary_rpc_method_handler(
           servicer.SendMsg,
-          request_deserializer=chat__pb2.Request.FromString,
-          response_serializer=chat__pb2.Msje.SerializeToString,
+          request_deserializer=chat__pb2.MessageRequest.FromString,
+          response_serializer=chat__pb2.MessageResponse.SerializeToString,
+      ),
+      'CreateChannel': grpc.unary_stream_rpc_method_handler(
+          servicer.CreateChannel,
+          request_deserializer=chat__pb2.MessageResponse.FromString,
+          response_serializer=chat__pb2.MessageRequest.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'grpc.Contection', rpc_method_handlers)
+      'grpc.ContectionServer', rpc_method_handlers)
+  server.add_generic_rpc_handlers((generic_handler,))
+
+
+class ser_messageStub(object):
+  # missing associated documentation comment in .proto file
+  pass
+
+  def __init__(self, channel):
+    """Constructor.
+
+    Args:
+      channel: A grpc.Channel.
+    """
+    self.savemsge = channel.unary_unary(
+        '/grpc.ser_message/savemsge',
+        request_serializer=chat__pb2.MessageRequest.SerializeToString,
+        response_deserializer=chat__pb2.MessageResponse.FromString,
+        )
+    self.getMsges = channel.unary_unary(
+        '/grpc.ser_message/getMsges',
+        request_serializer=chat__pb2.UserRequest.SerializeToString,
+        response_deserializer=chat__pb2.UserMsje.FromString,
+        )
+
+
+class ser_messageServicer(object):
+  # missing associated documentation comment in .proto file
+  pass
+
+  def savemsge(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def getMsges(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+
+def add_ser_messageServicer_to_server(servicer, server):
+  rpc_method_handlers = {
+      'savemsge': grpc.unary_unary_rpc_method_handler(
+          servicer.savemsge,
+          request_deserializer=chat__pb2.MessageRequest.FromString,
+          response_serializer=chat__pb2.MessageResponse.SerializeToString,
+      ),
+      'getMsges': grpc.unary_unary_rpc_method_handler(
+          servicer.getMsges,
+          request_deserializer=chat__pb2.UserRequest.FromString,
+          response_serializer=chat__pb2.UserMsje.SerializeToString,
+      ),
+  }
+  generic_handler = grpc.method_handlers_generic_handler(
+      'grpc.ser_message', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))

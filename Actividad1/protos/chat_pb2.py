@@ -13,6 +13,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,21 +21,91 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='grpc',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\nchat.proto\x12\x04grpc\"\x17\n\x07Request\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x17\n\x04Msje\x12\x0f\n\x07message\x18\x01 \x01(\t22\n\nContection\x12$\n\x07SendMsg\x12\r.grpc.Request\x1a\n.grpc.Msjeb\x06proto3')
-)
+  serialized_pb=_b('\n\nchat.proto\x12\x04grpc\x1a\x1fgoogle/protobuf/timestamp.proto\"W\n\x0eMessageRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12(\n\x04time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0f\n\x07message\x18\x03 \x01(\t\"\x11\n\x0fMessageResponse\"\x1d\n\x0bUserRequest\x12\x0e\n\x06userId\x18\x01 \x01(\t\"3\n\x0cUserResponse\x12#\n\x08userlist\x18\x01 \x03(\x0b\x32\x11.grpc.UserRequest\"/\n\x08UserMsje\x12#\n\x05msges\x18\x01 \x03(\x0b\x32\x14.grpc.MessageRequest\"\x18\n\x08response\x12\x0c\n\x04resp\x18\x01 \x01(\x08\x32\xaa\x01\n\x04User\x12,\n\x07\x61\x64\x64User\x12\x11.grpc.UserRequest\x1a\x0e.grpc.response\x12\x38\n\x0bgetListUser\x12\x15.grpc.MessageResponse\x1a\x12.grpc.UserResponse\x12:\n\x0e\x63loseConection\x12\x11.grpc.UserRequest\x1a\x15.grpc.MessageResponse2\x8a\x01\n\x10\x43ontectionServer\x12\x36\n\x07SendMsg\x12\x14.grpc.MessageRequest\x1a\x15.grpc.MessageResponse\x12>\n\rCreateChannel\x12\x15.grpc.MessageResponse\x1a\x14.grpc.MessageRequest0\x01\x32u\n\x0bser_message\x12\x37\n\x08savemsge\x12\x14.grpc.MessageRequest\x1a\x15.grpc.MessageResponse\x12-\n\x08getMsges\x12\x11.grpc.UserRequest\x1a\x0e.grpc.UserMsjeb\x06proto3')
+  ,
+  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
 
 
 
-_REQUEST = _descriptor.Descriptor(
-  name='Request',
-  full_name='grpc.Request',
+_MESSAGEREQUEST = _descriptor.Descriptor(
+  name='MessageRequest',
+  full_name='grpc.MessageRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='grpc.Request.name', index=0,
+      name='id', full_name='grpc.MessageRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='time', full_name='grpc.MessageRequest.time', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='grpc.MessageRequest.message', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=53,
+  serialized_end=140,
+)
+
+
+_MESSAGERESPONSE = _descriptor.Descriptor(
+  name='MessageResponse',
+  full_name='grpc.MessageResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=142,
+  serialized_end=159,
+)
+
+
+_USERREQUEST = _descriptor.Descriptor(
+  name='UserRequest',
+  full_name='grpc.UserRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='userId', full_name='grpc.UserRequest.userId', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -52,22 +123,22 @@ _REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20,
-  serialized_end=43,
+  serialized_start=161,
+  serialized_end=190,
 )
 
 
-_MSJE = _descriptor.Descriptor(
-  name='Msje',
-  full_name='grpc.Msje',
+_USERRESPONSE = _descriptor.Descriptor(
+  name='UserResponse',
+  full_name='grpc.UserResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='grpc.Msje.message', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='userlist', full_name='grpc.UserResponse.userlist', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -83,51 +154,232 @@ _MSJE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=45,
-  serialized_end=68,
+  serialized_start=192,
+  serialized_end=243,
 )
 
-DESCRIPTOR.message_types_by_name['Request'] = _REQUEST
-DESCRIPTOR.message_types_by_name['Msje'] = _MSJE
+
+_USERMSJE = _descriptor.Descriptor(
+  name='UserMsje',
+  full_name='grpc.UserMsje',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='msges', full_name='grpc.UserMsje.msges', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=245,
+  serialized_end=292,
+)
+
+
+_RESPONSE = _descriptor.Descriptor(
+  name='response',
+  full_name='grpc.response',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='resp', full_name='grpc.response.resp', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=294,
+  serialized_end=318,
+)
+
+_MESSAGEREQUEST.fields_by_name['time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_USERRESPONSE.fields_by_name['userlist'].message_type = _USERREQUEST
+_USERMSJE.fields_by_name['msges'].message_type = _MESSAGEREQUEST
+DESCRIPTOR.message_types_by_name['MessageRequest'] = _MESSAGEREQUEST
+DESCRIPTOR.message_types_by_name['MessageResponse'] = _MESSAGERESPONSE
+DESCRIPTOR.message_types_by_name['UserRequest'] = _USERREQUEST
+DESCRIPTOR.message_types_by_name['UserResponse'] = _USERRESPONSE
+DESCRIPTOR.message_types_by_name['UserMsje'] = _USERMSJE
+DESCRIPTOR.message_types_by_name['response'] = _RESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
-  'DESCRIPTOR' : _REQUEST,
+MessageRequest = _reflection.GeneratedProtocolMessageType('MessageRequest', (_message.Message,), {
+  'DESCRIPTOR' : _MESSAGEREQUEST,
   '__module__' : 'chat_pb2'
-  # @@protoc_insertion_point(class_scope:grpc.Request)
+  # @@protoc_insertion_point(class_scope:grpc.MessageRequest)
   })
-_sym_db.RegisterMessage(Request)
+_sym_db.RegisterMessage(MessageRequest)
 
-Msje = _reflection.GeneratedProtocolMessageType('Msje', (_message.Message,), {
-  'DESCRIPTOR' : _MSJE,
+MessageResponse = _reflection.GeneratedProtocolMessageType('MessageResponse', (_message.Message,), {
+  'DESCRIPTOR' : _MESSAGERESPONSE,
   '__module__' : 'chat_pb2'
-  # @@protoc_insertion_point(class_scope:grpc.Msje)
+  # @@protoc_insertion_point(class_scope:grpc.MessageResponse)
   })
-_sym_db.RegisterMessage(Msje)
+_sym_db.RegisterMessage(MessageResponse)
+
+UserRequest = _reflection.GeneratedProtocolMessageType('UserRequest', (_message.Message,), {
+  'DESCRIPTOR' : _USERREQUEST,
+  '__module__' : 'chat_pb2'
+  # @@protoc_insertion_point(class_scope:grpc.UserRequest)
+  })
+_sym_db.RegisterMessage(UserRequest)
+
+UserResponse = _reflection.GeneratedProtocolMessageType('UserResponse', (_message.Message,), {
+  'DESCRIPTOR' : _USERRESPONSE,
+  '__module__' : 'chat_pb2'
+  # @@protoc_insertion_point(class_scope:grpc.UserResponse)
+  })
+_sym_db.RegisterMessage(UserResponse)
+
+UserMsje = _reflection.GeneratedProtocolMessageType('UserMsje', (_message.Message,), {
+  'DESCRIPTOR' : _USERMSJE,
+  '__module__' : 'chat_pb2'
+  # @@protoc_insertion_point(class_scope:grpc.UserMsje)
+  })
+_sym_db.RegisterMessage(UserMsje)
+
+response = _reflection.GeneratedProtocolMessageType('response', (_message.Message,), {
+  'DESCRIPTOR' : _RESPONSE,
+  '__module__' : 'chat_pb2'
+  # @@protoc_insertion_point(class_scope:grpc.response)
+  })
+_sym_db.RegisterMessage(response)
 
 
 
-_CONTECTION = _descriptor.ServiceDescriptor(
-  name='Contection',
-  full_name='grpc.Contection',
+_USER = _descriptor.ServiceDescriptor(
+  name='User',
+  full_name='grpc.User',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=70,
-  serialized_end=120,
+  serialized_start=321,
+  serialized_end=491,
   methods=[
   _descriptor.MethodDescriptor(
-    name='SendMsg',
-    full_name='grpc.Contection.SendMsg',
+    name='addUser',
+    full_name='grpc.User.addUser',
     index=0,
     containing_service=None,
-    input_type=_REQUEST,
-    output_type=_MSJE,
+    input_type=_USERREQUEST,
+    output_type=_RESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='getListUser',
+    full_name='grpc.User.getListUser',
+    index=1,
+    containing_service=None,
+    input_type=_MESSAGERESPONSE,
+    output_type=_USERRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='closeConection',
+    full_name='grpc.User.closeConection',
+    index=2,
+    containing_service=None,
+    input_type=_USERREQUEST,
+    output_type=_MESSAGERESPONSE,
     serialized_options=None,
   ),
 ])
-_sym_db.RegisterServiceDescriptor(_CONTECTION)
+_sym_db.RegisterServiceDescriptor(_USER)
 
-DESCRIPTOR.services_by_name['Contection'] = _CONTECTION
+DESCRIPTOR.services_by_name['User'] = _USER
+
+
+_CONTECTIONSERVER = _descriptor.ServiceDescriptor(
+  name='ContectionServer',
+  full_name='grpc.ContectionServer',
+  file=DESCRIPTOR,
+  index=1,
+  serialized_options=None,
+  serialized_start=494,
+  serialized_end=632,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='SendMsg',
+    full_name='grpc.ContectionServer.SendMsg',
+    index=0,
+    containing_service=None,
+    input_type=_MESSAGEREQUEST,
+    output_type=_MESSAGERESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='CreateChannel',
+    full_name='grpc.ContectionServer.CreateChannel',
+    index=1,
+    containing_service=None,
+    input_type=_MESSAGERESPONSE,
+    output_type=_MESSAGEREQUEST,
+    serialized_options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_CONTECTIONSERVER)
+
+DESCRIPTOR.services_by_name['ContectionServer'] = _CONTECTIONSERVER
+
+
+_SER_MESSAGE = _descriptor.ServiceDescriptor(
+  name='ser_message',
+  full_name='grpc.ser_message',
+  file=DESCRIPTOR,
+  index=2,
+  serialized_options=None,
+  serialized_start=634,
+  serialized_end=751,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='savemsge',
+    full_name='grpc.ser_message.savemsge',
+    index=0,
+    containing_service=None,
+    input_type=_MESSAGEREQUEST,
+    output_type=_MESSAGERESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='getMsges',
+    full_name='grpc.ser_message.getMsges',
+    index=1,
+    containing_service=None,
+    input_type=_USERREQUEST,
+    output_type=_USERMSJE,
+    serialized_options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_SER_MESSAGE)
+
+DESCRIPTOR.services_by_name['ser_message'] = _SER_MESSAGE
 
 # @@protoc_insertion_point(module_scope)
