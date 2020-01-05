@@ -76,7 +76,7 @@ class msgeServer():
 
 def servidor():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    chat_pb2_grpc.add_ContectionServerServicer_to_server(Chat(), Server)
+    chat_pb2_grpc.add_ContectionServerServicer_to_server(Chat(), server)
     chat_pb2_grpc.add_UserServicer_to_server(Users(),server)
     chat_pb2_grpc.add_ser_messageServicer_to_server(msgeServer(),server)
     server.add_insecure_port('[::]50051')
