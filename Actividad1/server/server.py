@@ -6,7 +6,7 @@ import grpc
 import chat_pb2 as chat_pb2
 import chat_pb2_grpc as chat_pb2_grpc
 
-class Chat():
+class Chat(chat_pb2_grpc.ContectionServerServicer):
     def __init__(self):
         self.listChats =[]
     def sendmsge(self, request: chat_pb2.MessageRequest, context):
@@ -27,7 +27,7 @@ class Chat():
                 aux += 1
                 yield n
 
-class Users():
+class Users(chat_pb2_grpc.UserServicer):
     def __init__(self):
         self.usersList = []
     def JoinChat(self, request, context):
@@ -54,7 +54,7 @@ class Users():
 
         return chat_pb2.MessageResponse()
     
-class msgeServer():
+class msgeServer(chat_pb2_grpc.ser_messageServicer):
     def __init__(self):
         self.user_messages = {}
     def MsgeSave(self, request, context):
@@ -71,7 +71,7 @@ class msgeServer():
         if name not in self.user_messages:
             return uMsge
         uMsge.msges.extend(self.uMsge[name])
-        return uMsge
+        return uMsgeContectionServer
         
 
 def servidor():

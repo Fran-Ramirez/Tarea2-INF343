@@ -87,13 +87,13 @@ def client_start():
             #Usuario a enviarle el mensaje
             print("\n\n#############\n#############")
             print("Escriba el numero del usuario a enviarle el mensaje:")
-            to_id = int(raw_input())
+            to_id = int(input())
             if(to_id == int(new_client_id)):
                 print("Te estas enviando un mensaje a ti, no es posible realizar esta operacion, intentalo nuevamente.")
                 continue
             #Mensaje a enviar
             print("Escriba el mensaje que quiere enviar.\n** Para ver clientes conectados, escriba 'ver clientes conectados'\n** Para ver tus mensajes, escriba 'ver mensajes'\n** Para cerrar la conexion, escriba 'close'")
-            text = raw_input()
+            text = input()
             #Detectar tipo de mensaje
             if(text == "close"):
                 new_client.close_conection()

@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM python:latest
 RUN apt-get update
 RUN apt-get install -y python3
 RUN cd /usr/local/bin
