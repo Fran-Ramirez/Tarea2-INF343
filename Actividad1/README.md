@@ -1,8 +1,8 @@
 Para desplegar la arquitectura se deben usar los siguientes comando tras ingresar a la carpeta Actividad1:
 
-$sudo docker-compose build
+    $sudo docker-compose build
 
-$sudo docker-compose up --scale client=2
+    $sudo docker-compose up --scale client=2
 
 Con esto se podra iniciar un chat entre dos clientes, es importante tener en cuenta que cada usuario necesita su propia terminar para probar la tarea.
 
@@ -22,6 +22,6 @@ Para probar la interacción entre clientes se deben seguir los siguientes pasos:
    
 Con estos comandos se estará dentro de los contenedores de cada usuario, luego para probar el chat, ejecutar el siguiente comando:
 
-$python client.py
+    $python client.py
 
 he ingresar lo solicitado
